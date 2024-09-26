@@ -23,7 +23,7 @@
           <a class="nav-link active" aria-current="page" href="#">Beranda</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="mahasiswa">Mahasiswa</a>
+          <a class="nav-link" href="mahasiswa/index.php">Mahasiswa</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="#">Dosen</a>
