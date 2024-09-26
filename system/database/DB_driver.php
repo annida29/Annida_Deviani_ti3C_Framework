@@ -51,6 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @author		EllisLab Dev Team
  * @link		https://codeigniter.com/userguide3/database/
  */
+#[\AllowDynamicProperties]
 abstract class CI_DB_driver {
 
 	/**
@@ -369,7 +370,7 @@ abstract class CI_DB_driver {
 		{
 			foreach ($params as $key => $val)
 			{
-				$this->$key = $val;
+		$this->$key = $val;
 			}
 		}
 
@@ -1014,7 +1015,7 @@ abstract class CI_DB_driver {
 		$ml = strlen($this->bind_marker);
 
 		// Make sure not to replace a chunk inside a string that happens to match the bind marker
-		if ($c = preg_match_all("/'[^']*'|\"[^\"]*\"/i", $sql, $matches))
+		if ($c = preg_match_all("/'[^']'|\"[^\"]\"/i", $sql, $matches))
 		{
 			$c = preg_match_all('/'.preg_quote($this->bind_marker, '/').'/i',
 				str_replace($matches[0],
@@ -1159,8 +1160,8 @@ abstract class CI_DB_driver {
 		if ($like === TRUE)
 		{
 			return str_replace(
-				array($this->_like_escape_chr, '%', '_'),
-				array($this->_like_escape_chr.$this->_like_escape_chr, $this->_like_escape_chr.'%', $this->_like_escape_chr.'_'),
+				array($this->like_escape_chr, '%', ''),
+				array($this->like_escape_chr.$this->_like_escape_chr, $this->_like_escape_chr.'%', $this->_like_escape_chr.''),
 				$str
 			);
 		}
